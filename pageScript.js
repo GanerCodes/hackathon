@@ -28,15 +28,27 @@ function logInSignUp(type) {
 }
 
 function joinGroupButton() {
-    const usernameElm = document.getElementById("groupID");
-    if(!checkWarnTextVal(usernameElm)) return;
-    const group_id = usernameElm.value;
+    const groupElm = document.getElementById("groupID");
+    if(!checkWarnTextVal(groupElm)) return;
+    const group_id = groupElm.value;
+    joinGroup().then(() => {
+        reset_swaps();
+        checkGroupMembership();
+    });
+}
+
+function createGroupButton() {
+    const groupElm = document.getElementById("groupID");
+    if(!checkWarnTextVal(groupElm)) return;
+    const group_id = groupElm.value;
+    // TODO: change your group id to this one
     reset_swaps();
-    checkGroupMembership();
+    // checkGroupMembership();
 }
 
 function createTaskElement(task) {
-    // 
+    const elm = document.createElement("div");
+    elm.className = "";
 }
 function createRewardElement(reward) {
     //

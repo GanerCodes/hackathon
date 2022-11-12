@@ -16,9 +16,10 @@ function login(user_name, user_pass) {
     createUser().then(() => {
         localStorage.setItem("user_name", user_name);
         localStorage.setItem("user_pass", user_pass);
-    }).catch(err => console.log(`Error creating/logging in user! ${err}`));
+    }).catch(err => console.log("Error creating/logging in user!", err));
 }
 function getHttp(path, headers) {
+    console.log("GETTING!", path, headers);
     return new Promise(async (resolve, reject) => {
         if (!headers) {
             headers = {}
@@ -34,14 +35,18 @@ function getHttp(path, headers) {
         });
 
         response.json().then(data => {
+            console.log("GOT JSON: ", data);
             resolve(data);
         }).catch(error => {
-            reject(error);
+            console.log("NO JSON :(")
+            resolve({})
+            // reject(error);
         })
     })
 }
 
 function postHttp(path, body, headers) {
+    console.log("POSTING!", path, body, headers);
     return new Promise(async (resolve, reject) => {
         if (!headers) {
             headers = {}
@@ -51,17 +56,19 @@ function postHttp(path, body, headers) {
         headers['Access-Control-Allow-Origin'] = '*'
         headers.user_name = user_name;
         headers.user_pass = user_pass;
-
+        
         const response = await fetch(host + path, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),
         });
-
         response.json().then(data => {
+            console.log("GOT JSON: ", data);
             resolve(data);
         }).catch(error => {
-            reject(error);
+            console.log("NO JSON :(");
+            resolve({});
+            // reject(error);
         })
     })
 }
