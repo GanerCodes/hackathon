@@ -35,6 +35,13 @@ function joinGroupButton() {
     checkGroupMembership();
 }
 
+function createRewardElement(reward) {
+    //
+}
+function createTaskElement(task) {
+    // 
+}
+
 async function switchToUserScreen() {
     reset_swaps();
     swap("login_gui", "user_panel");
@@ -44,4 +51,13 @@ async function switchToUserScreen() {
     
     const userInfoTextElm = document.getElementById("userInfoText");
     userInfoTextElm.innerHTML = `${username} - ${myPoints} points`;
+    
+    const tasks = getTaskFromGroupIBelong(task);
+    const rewards = getRewardsFromGroupIBelong(task);
+    const task_container = document.getElementById("task_container");
+    const reward_container = document.getElementById("reward_container");
+    
+    task_container.children = []
+    reward_container.children = []
+    // for(const )
 }
