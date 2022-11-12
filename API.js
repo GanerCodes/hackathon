@@ -15,8 +15,10 @@ function login(user_name_in, user_pass_in) {
     user_name = user_name_in;
     user_pass = user_pass_in;
 
-    localStorage.setItem("user_name", user_name);
-    localStorage.setItem("user_pass", user_pass);
+    createUser(user_name, user_pass).then(() => {
+        localStorage.setItem("user_name", user_name);
+        localStorage.setItem("user_pass", user_pass);
+    }).catch(err => console.log(`Error creating/logging in user! ${err}`));
 }
 function getHttp(path, headers) {
     return new Promise(async (resolve, reject) => {
