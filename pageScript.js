@@ -31,7 +31,7 @@ function joinGroupButton() {
     const groupElm = document.getElementById("groupID");
     if(!checkWarnTextVal(groupElm)) return;
     const group_id = groupElm.value;
-    joinGroup().then(() => {
+    joinGroup(group_id).then(() => {
         reset_swaps();
         checkGroupMembership();
     });
