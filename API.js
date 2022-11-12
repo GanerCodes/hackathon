@@ -61,7 +61,7 @@ function postHttp(path, body, headers) {
         response.json().then(data => {
             resolve(data);
         }).catch(error => {
-            reject(data);
+            reject(error);
         })
     })
 }

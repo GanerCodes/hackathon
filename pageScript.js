@@ -35,11 +35,11 @@ function joinGroupButton() {
     checkGroupMembership();
 }
 
-function createRewardElement(reward) {
-    //
-}
 function createTaskElement(task) {
     // 
+}
+function createRewardElement(reward) {
+    //
 }
 
 async function switchToUserScreen() {
@@ -59,5 +59,10 @@ async function switchToUserScreen() {
     
     task_container.children = []
     reward_container.children = []
-    // for(const )
+    for(const task of tasks) {
+        task_container.appendChild(createTaskElement(task));
+    }
+    for(const reward of rewards) {
+        task_container.appendChild(createRewardElement(reward));
+    }
 }
