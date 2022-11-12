@@ -25,6 +25,7 @@ function getHttp(path, headers) {
         }
         headers.Accept = 'application/json';
         headers['Content-Type'] = 'application/json';
+        headers['Access-Control-Allow-Origin'] = '*'
         headers.user_name = user_name;
         headers.user_pass = user_pass;
         const response = await fetch(host + path, {
@@ -47,6 +48,7 @@ function postHttp(path, body, headers) {
         }
         headers.Accept = 'application/json';
         headers['Content-Type'] = 'application/json';
+        headers['Access-Control-Allow-Origin'] = '*'
         headers.user_name = user_name;
         headers.user_pass = user_pass;
 

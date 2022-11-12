@@ -18,6 +18,10 @@ body {
     vertical-align: center;
     margin: auto;
 }
+.main_container {
+    height: 75%;
+    padding-top: 15%;
+}
 .centered_contained {
     display: flex;
     flex-direction: column;
