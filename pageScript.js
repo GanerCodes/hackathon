@@ -48,10 +48,13 @@ function createGroupButton() {
 
 function createTaskElement(task) {
     const elm = document.createElement("div");
-    elm.className = "";
+    // add task properties to div
+    return elm;
 }
 function createRewardElement(reward) {
-    //
+    const elm = document.createElement("div");
+    // add task properties to div
+    return elm;
 }
 
 async function switchToUserScreen() {

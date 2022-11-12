@@ -36,10 +36,14 @@ body {
     margin-top: 20px;
 }
 .half_container {
-    width: 40%;
+    background-color: rgba(38, 139, 221, 0.3);
+    width: 45%;
     height: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 .side_container_header,
@@ -49,6 +53,7 @@ body {
     height: 100px;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
     text-align: center;
 }
 .side_container_header {
