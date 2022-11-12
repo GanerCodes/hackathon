@@ -7,15 +7,13 @@ var user_pass = null;
 window.onload = () => {
     user_name = localStorage.getItem("user_name");
     user_pass = localStorage.getItem("user_pass");
+    if(user_name && user_pass) login(user_name, user_pass)
 }
 function isLoggedIn() {
     return (user_name && user_pass);
 }
-function login(user_name_in, user_pass_in) {
-    user_name = user_name_in;
-    user_pass = user_pass_in;
-
-    createUser(user_name, user_pass).then(() => {
+function login(user_name, user_pass) {
+    createUser().then(() => {
         localStorage.setItem("user_name", user_name);
         localStorage.setItem("user_pass", user_pass);
     }).catch(err => console.log(`Error creating/logging in user! ${err}`));
@@ -71,10 +69,9 @@ function postHttp(path, body, headers) {
 function hashPassword(pass) {
     return pass;
 }
-function createUser(user_name_in, user_pass_in) {
+function createUser() {
     return new Promise(async (resolve, reject) => {
-        login(user_name_in, user_pass_in);
-        res = await postHttp("members/add",{});
+        res = await postHttp("members/add", {});
         if (res.group_id) {
             resolve(res.group_id);
         } else {
