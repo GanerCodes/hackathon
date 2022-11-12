@@ -36,6 +36,18 @@ body {
     visibility: none;
 }
 
+.header_image {
+    display: block;
+    position: absolute;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    left: 25%;
+    width: 50%;
+}
+
 .text_input,
 .big_button {
     width: 600px;

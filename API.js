@@ -1,5 +1,5 @@
 // const host = window.location.protocol + "//" + window.location.host + "/";
-const host = "http://10.35.126.91:5000/"
+const host = "http://127.0.0.1/";
 
 var user_name = null;
 var user_pass = null;
