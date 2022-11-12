@@ -69,10 +69,8 @@ function hashPassword(pass) {
 }
 function createUser(user_name_in, user_pass_in) {
     return new Promise(async (resolve, reject) => {
-        res = await postHttp("createUser", {
-            user_name: user_name_in,
-            user_pass: hashPassword(user_pass_in)
-        });
+        login(user_name_in, user_pass_in);
+        res = await postHttp("members/add",{});
         if (res.group_id) {
             resolve(res.group_id);
         } else {
@@ -83,7 +81,7 @@ function createUser(user_name_in, user_pass_in) {
 
 function joinGroup(group_id) {
     return new Promise(async (resolve, reject) => {
-        res = await postHttp("joinGroup", {
+        res = await postHttp("members/joingroup", {
             group_id: group_id,
         });
         if (!res.error) {
@@ -96,7 +94,7 @@ function joinGroup(group_id) {
 
 function getGroupIOwn() {
     return new Promise(async (resolve, reject) => {
-        res = await getHttp("getGroupIOwn");
+        res = await getHttp("members/group");
         if (res.group_id) {
             resolve(res.group_id)
         } else {
@@ -107,7 +105,7 @@ function getGroupIOwn() {
 
 function getGroupIBelongTo() {
     return new Promise(async (resolve, reject) => {
-        res = await getHttp("getGroupIBelongTo")
+        res = await getHttp("members/allgroups")
         if (res.group_id) {
             resolve(res.group_id);
         } else {
@@ -118,7 +116,7 @@ function getGroupIBelongTo() {
 
 function getMyPoints() {
     return new Promise(async (resolve, reject) => {
-        res = await getHttp("getMyPoints");
+        res = await getHttp("currency/user");
         if (res.points) {
             resolve(res.points);
         } else {
@@ -129,7 +127,7 @@ function getMyPoints() {
 
 function setUserPoints(user_name, points) {
     return new Promise(async (resolve, reject) => {
-        res = await postHttp("setUserPoints", {
+        res = await postHttp("currency/set", {
             user_name: user_name,
             points: points,
         });
@@ -143,7 +141,7 @@ function setUserPoints(user_name, points) {
 
 function redeemReward(taskName) {
     return new Promise(async (resolve, reject) => {
-        res = await postHttp("redeemReward", {
+        res = await postHttp("task/submit", {
             reward_name: taskName,
         });
         if (!res.error) {
@@ -167,7 +165,7 @@ function addTask(taskName, description, time, points, repeat) {
             postBody.type = "repeat";
             postBody.repeat = repeat;
         }
-        res = await postHttp("addTask",postBody);
+        res = await postHttp("task/add",postBody);
         if (!res.error) {
             resolve(res);
         } else {
