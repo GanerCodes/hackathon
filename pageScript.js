@@ -43,5 +43,5 @@ async function switchToUserScreen() {
     const myRewards = await getRewardsFromGroupIBelong();
     
     const userInfoTextElm = document.getElementById("userInfoText");
-    userInfoTextElm.value = `${username} - ${myPoints} points`;
+    userInfoTextElm.innerHTML = `${username} - ${myPoints} points`;
 }
